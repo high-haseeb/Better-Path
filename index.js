@@ -28,6 +28,30 @@ const composer = new EffectComposer(renderer);
 composer.addPass(renderScene);
 composer.addPass(bloomPass);
 
+// Sound Effects
+const sounds = [];
+let fitzSound, laserSound;
+const manager = new THREE.LoadingManager();
+manager.onLoad = () => console.log("loaded", sounds);
+const audioLoader = new THREE.AudioLoader(manager);
+const mp3s = ["fitz", "laser-01", "blarmp"];
+const listener = new THREE.AudioListener();
+camera.add(listener);
+mp3s.forEach((name) => {
+  const sound = new THREE.Audio(listener);
+  sound.name = name;
+  if (name === "blarmp") {
+    fitzSound = sound;
+  }
+  if (name === "laser-01") {
+    laserSound = sound;
+  }
+  sounds.push(sound);
+  audioLoader.load(`./sfx/${name}.mp3`, function (buffer) {
+    sound.setBuffer(buffer);
+  });
+});
+
 const stars = getStarfield();
 scene.add(stars);
 
@@ -48,6 +72,7 @@ const hitMat = new THREE.MeshBasicMaterial({
   side: THREE.BackSide
 });
 const tubeHitArea = new THREE.Mesh(tubeGeo, hitMat);
+tubeHitArea.name = 'tube';
 scene.add(tubeHitArea);
 
 const boxGroup = new THREE.Group();
@@ -145,6 +170,8 @@ function getLaserBolt() {
     if (intersects[0].object.name === 'box') {
       impactBox = intersects[0].object.userData.box;
       boxGroup.remove(intersects[0].object);
+      fitzSound.stop();
+      fitzSound.play();
     }
   }
 
@@ -206,6 +233,8 @@ function fireLaser() {
   const laser = getLaserBolt();
   lasers.push(laser);
   scene.add(laser);
+  laserSound.stop();
+  laserSound.play();
 
   // cleanup
   let inactiveLasers = lasers.filter((l) => l.userData.active === false);
