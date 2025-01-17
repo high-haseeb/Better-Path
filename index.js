@@ -23,13 +23,13 @@ controls.dampingFactor = 0.03;
 
 // post-processing
 const renderScene = new RenderPass(scene, camera);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 1.5, 0.4, 100);
-bloomPass.threshold = 0.002;
-bloomPass.strength = 3.5;
-bloomPass.radius = 0;
+// const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 1.5, 0.4, 100);
+// bloomPass.threshold = 0.002;
+// bloomPass.strength = 3.5;
+// bloomPass.radius = 0;
 const composer = new EffectComposer(renderer);
 composer.addPass(renderScene);
-composer.addPass(bloomPass);
+// composer.addPass(bloomPass);
 
 // create a line geometry from the spline
 const points = spline.getPoints(100);
