@@ -34,7 +34,7 @@ composer.addPass(bloomPass);
 // create a line geometry from the spline
 const points = spline.getPoints(100);
 const geometry = new THREE.BufferGeometry().setFromPoints(points);
-const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+const material = new THREE.LineBasicMaterial({ color: 0xffffff });
 const line = new THREE.Line(geometry, material);
 // scene.add(line);
 
@@ -43,11 +43,11 @@ const tubeGeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
 
 // create edges geometry from the spline
 const edges = new THREE.EdgesGeometry(tubeGeo, 0.2);
-const lineMat = new THREE.LineBasicMaterial({ color: 0xff0000 });
+const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
 const tubeLines = new THREE.LineSegments(edges, lineMat);
 scene.add(tubeLines);
 
-const numBoxes = 55;
+const numBoxes = 0;
 const size = 0.075;
 const boxGeo = new THREE.BoxGeometry(size, size, size);
 for (let i = 0; i < numBoxes; i += 1) {
