@@ -1,0 +1,91 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    z-index: 0;
+}
+
+#startCanvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    background-color: black;
+    z-index: 0;
+    transition: 1s;
+}
+
+#startCanvas .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  }
+
+#fullscreenQuote {
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-size:xx-large;
+}
+
+#fullscreenQuoteSub {
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-style:italic;
+    font-size:large;
+}
+
+
+blockquote {
+    color: rgba(250, 255, 255, 0.9);
+    font-family:'Times New Roman', Times, serif;
+    /* font-family: Tahoma, sans-serif; */
+    font-size: 60px;
+    width: 60%;
+    margin: 0 auto;
+    z-index: 0;
+    transition: 1s;
+ }
+ blockquote h1 {
+    color: rgba(250, 255, 255, 0.9);
+    font-size: 4rem;
+ }
+ blockquote p {
+    color: rgba(250, 255, 255, 0.9);
+    font-style: italic;
+    margin-bottom: 0;
+ }
+ 
+ blockquote p::before,
+ blockquote p::after {
+    content: "“";
+    font-family: Georgia;
+    font-size: 8rem;
+    margin: -2rem 0 0 -4rem;
+    position: absolute;
+    opacity: 0.5;
+ }
+ 
+ blockquote p::after {
+    content: "”";
+    margin: -1rem -4rem 0 0;
+ }
+ 
+ blockquote cite {
+    color: rgba(250, 255, 255, 0.9);
+    font-size: 1.5rem;
+ }
+
+ blockquote .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  }
+
