@@ -187,6 +187,7 @@ function changeEscalationLevel(level) {
     console.log("escalation level: " + escalationLevel)
     if (escalationLevel != escalationLevelPrev) {
         // change ambience loop
+        if (!ambiencePlayers[escalationLevelPrev].gainNode) return;
         ambiencePlayers[escalationLevelPrev].gainNode.gain.setValueAtTime(ambiencePlayers[escalationLevelPrev].gainNode.gain.value, audioContext.currentTime);
         ambiencePlayers[escalationLevelPrev].gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + crossfadeTimeInSeconds[escalationLevel]);
         for (let i = 0; i < ambiencePlayers.length; i++) {
