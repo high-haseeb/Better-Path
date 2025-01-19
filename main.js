@@ -152,6 +152,12 @@ function drawLoop() {
     }
 
     perimeterRadiusPrev = perimeterRadius;
+
+    if (isPointerDown) {
+        perimeterIncrement = dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin * 2, perimeterIncrementMax * 10);
+    } else {
+        perimeterIncrement = dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
+    }
     if (isInCircle || escalationLevel >= 4) {
         gameActive = true;
         if (!gameActivePrev) {
@@ -221,10 +227,19 @@ function changeEscalationLevel(level) {
         escalationLevelPrev = escalationLevel;
     }
 }
+let isPointerDown = false;
 
 // Add an event listener to track the mouse coordinates
 canvas.addEventListener('mousemove', (event) => {
     trackMouse(event);
+});
+
+canvas.addEventListener('pointerdown', (_event) => {
+    isPointerDown = true;
+});
+
+canvas.addEventListener('pointerup', (_event) => {
+    isPointerDown = false;
 });
 
 startCanvas.addEventListener('click', (event) => {
