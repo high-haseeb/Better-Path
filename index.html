@@ -7,9 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
     <title>A Better Path (Demo)</title>
+
+    <script type="importmap">
+      {
+		"imports": {
+			"three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
+            "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
+        }
+	}
+    </script>
 </head>
 
 <body>
+
     <canvas id="canvas"></canvas>
     <canvas id="startCanvas"></canvas>
     <blockquote id="quote">
@@ -17,6 +27,7 @@
         <cite>Anonymous</cite>
     </blockquote>
     <script type="module" src="./main.js"></script>
+    <!-- <script type="module" src="./wormhole.js"></script> -->
 </body>
 
 </html>

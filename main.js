@@ -1,4 +1,4 @@
-import { WormHole } from "./wormhole";
+import { WormHole } from "./wormhole.js";
 
 const wormhole = new WormHole();
 
