@@ -1,0 +1,16 @@
+{
+  "name": "flythru-wireframe-wormhole",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "three": "^0.172.0",
+    "vite": "^6.0.7"
+  }
+}
