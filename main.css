@@ -29,6 +29,9 @@ canvas {
     transition: visibility 0s 2s, opacity 2s linear;
   }
 
+.canvas {
+    background-color: black;
+}
 #fullscreenQuote {
     color: white;
     font-family:'Times New Roman', Times, serif;

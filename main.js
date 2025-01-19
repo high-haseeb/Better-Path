@@ -118,15 +118,26 @@ function drawCircle() {
     // ctx.fill();
     ctx.restore();
 
+    const gradient = ctx.createRadialGradient(
+        anchorX, anchorY, perimeterRadius - 20, // Inner circle (start of gradient)
+        anchorX, anchorY, perimeterRadius       // Outer circle (end of gradient)
+    );
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 0)'); // Transparent white
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 1)');       // Solid black
+
+    // Draw the gradient around the circle
     ctx.beginPath();
     ctx.arc(anchorX, anchorY, perimeterRadius, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 20; // Adjust the width of the gradient border
     ctx.stroke();
 }
 
 // Draw loop: escalation logic happens here
 function drawLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     anchorX = centerX + centreOffsetX;
     anchorY = centerY + centreOffsetY;
     const distance = Math.hypot(mouseX - anchorX, mouseY - anchorY);
