@@ -119,8 +119,8 @@ function drawCircle() {
     ctx.restore();
 
     const gradient = ctx.createRadialGradient(
-        anchorX, anchorY, perimeterRadius - 20, // Inner circle (start of gradient)
-        anchorX, anchorY, perimeterRadius       // Outer circle (end of gradient)
+        anchorX, anchorY, perimeterRadius - 10, // Inner circle (start of gradient)
+        anchorX, anchorY, perimeterRadius + 10 // Outer circle (end of gradient)
     );
     gradient.addColorStop(0, 'rgba(255, 255, 255, 0)'); // Transparent white
     gradient.addColorStop(1, 'rgba(0, 0, 0, 1)');       // Solid black
@@ -150,21 +150,28 @@ function drawLoop() {
         centreOffsetX = centreOffsetX * centreOffsetSmoothFactor;
         centreOffsetY = centreOffsetY * centreOffsetSmoothFactor;
     }
-
     perimeterRadiusPrev = perimeterRadius;
+
+
+    if (!isPointerDown) {
+        wormhole.pause();
+    } else {
+        wormhole.resume();
+    }
 
     if (isPointerDown) {
         perimeterIncrement = dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin * 2, perimeterIncrementMax * 10);
     } else {
-        perimeterIncrement = dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
+        // perimeterIncrement = dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
+        perimeterIncrement = 0;//dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
     }
+
     if (isInCircle || escalationLevel >= 4) {
         gameActive = true;
         if (!gameActivePrev) {
             // events to trigger when entering circle
             triggerVO_temptation();
             changeEscalationLevel(1);
-            wormhole.setSpeed(1);
         }
         if (perimeterRadius < Math.max(canvas.width, canvas.height)) {
             // perimieterIncrement = perimeterRadius
@@ -177,11 +184,11 @@ function drawLoop() {
             // events to trigger when exiting circle
             triggerVO_sensibility();
             changeEscalationLevel(0);
-
-            wormhole.setSpeed(-1.0);
         }
         if (perimeterRadius > 50) {
             perimeterRadius -= perimeterDecrement;
+            wormhole.reverse();
+            // wormhole.resume();
             decrementing = false;
         }
     }

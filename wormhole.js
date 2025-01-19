@@ -13,7 +13,6 @@ export class WormHole {
         this.renderer.setSize(w, h);
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-        // document.body.appendChild(this.renderer.domElement);
 
         // create a tube geometry from the spline
         this.tubeGeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
@@ -23,7 +22,12 @@ export class WormHole {
         const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 4 });
         const tubeLines = new THREE.LineSegments(edges, lineMat);
         this.scene.add(tubeLines);
+
         this.speed = 1.0;
+        this.isPaused = false;  // Track if the animation is paused
+        this.isReversed = false;  // Track if the animation is reversed
+        this.timePaused = 0;  // Store the time when paused
+        this.animationTime = 0;  // Store the current time of the animation
 
         window.addEventListener('resize', this.handleWindowResize.bind(this), false);
         this.animate();
@@ -31,7 +35,7 @@ export class WormHole {
 
     getCanvas() {
         if (!this.renderer.domElement) {
-            throw new Error("Renderer not initalized yet! Please Wait before calling it")
+            throw new Error("Renderer not initialized yet! Please Wait before calling it");
         }
         return this.renderer.domElement;
     }
@@ -40,11 +44,34 @@ export class WormHole {
         this.speed = speed;
     }
 
+    // Method to pause the animation
+    pause() {
+        this.isPaused = true;
+    }
+
+    // Method to resume the animation
+    resume() {
+        this.isPaused = false;
+        this.timePaused = Date.now() - this.animationTime;  // Set the time when the animation was paused
+    }
+
+    // Method to reverse the animation
+    reverse() {
+        this.isReversed = !this.isReversed;
+        this.speed = this.isReversed ? -Math.abs(this.speed) : Math.abs(this.speed);
+    }
+
     updateCamera(t) {
-        const time = t * Math.abs(this.speed) * 0.1;
+        if (this.isPaused) {
+            return;  // If paused, do not update camera
+        }
+
+        // Update the animation time
+        this.animationTime = Date.now();
+        const time = (t + this.timePaused) * Math.abs(this.speed) * 0.1;
         const looptime = 10 * 1000;
-        const direction = this.speed >= 0 ? 1 : -1;
-        let  p = ((time % looptime) / looptime) * direction;
+        const direction = this.isReversed ? -1 : 1;  // Use reversed direction if necessary
+        let p = ((time % looptime) / looptime) * direction;
         p = (p + 1) % 1;
         const pos = this.tubeGeo.parameters.path.getPointAt(p);
         const lookAt = this.tubeGeo.parameters.path.getPointAt((p + 0.03) % 1);
@@ -57,6 +84,7 @@ export class WormHole {
         this.updateCamera(t);
         this.renderer.render(this.scene, this.camera);
     }
+
     handleWindowResize() {
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
