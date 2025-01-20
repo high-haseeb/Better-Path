@@ -3,6 +3,10 @@
 
 import * as THREE from "three";
 import spline from "./spline.js";
+import { EffectComposer } from "jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "jsm/postprocessing/UnrealBloomPass.js";
+import getStarfield from "./getStarField.js";
 
 export class WormHole {
     constructor() {
@@ -14,7 +18,7 @@ export class WormHole {
         this.camera.position.z = 5;
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(w, h);
-        this.renderer.setPixelRatio(1);
+        // this.renderer.setPixelRatio(1);
 
         this.tubeGeo = new THREE.TubeGeometry(spline, 512, 0.65, 64, true);
 
@@ -28,6 +32,19 @@ export class WormHole {
         this.isReversed = false;
         this.timePaused = 0;
         this.animationTime = 0;
+
+        // post-processing
+        const renderScene = new RenderPass(this.scene, this.camera);
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 1.5, 0.4, 100);
+        bloomPass.threshold = 0.042;
+        bloomPass.strength = 1.0;
+        bloomPass.radius = 0;
+        this.composer = new EffectComposer(this.renderer);
+        this.composer.addPass(renderScene);
+        this.composer.addPass(bloomPass);
+
+        const stars = getStarfield();
+        this.scene.add(stars);
 
         window.addEventListener('resize', () => this.handleWindowResize());
         this.animate();
@@ -78,7 +95,8 @@ export class WormHole {
     animate(t = 0) {
         requestAnimationFrame(this.animate.bind(this));
         this.updateCamera(t);
-        this.renderer.render(this.scene, this.camera);
+        // this.renderer.render(this.scene, this.camera);
+        this.composer.render(this.scene, this.camera);
     }
 
     handleWindowResize() {
