@@ -1,3 +1,6 @@
+// Written by high-haseeb <https://github.com/high-haseeb/>
+// This file is part of project 'Better-Path'
+
 import * as THREE from "three";
 import spline from "./spline.js";
 

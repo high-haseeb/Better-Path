@@ -3,12 +3,12 @@ import { WormHole } from "./wormhole.js";
 const wormhole = new WormHole();
 
 // MAIN PARAMETERS
-const crossfadeTimeInSeconds = [1, 1, 10, 5, 3];                // crossfade time per escalation level
-const timerTriggerInterval = 6500;                          // interval between each VO
-const perimeterIncrementMin = 0.15;                         // minimum circle grow rate (at start of experience)
-const perimeterIncrementMax = 0.5;                          // maximum circle grow rate (at final escalation stage)
+const crossfadeTimeInSeconds = [1, 1, 10, 5, 3];          // crossfade time per escalation level
+const timerTriggerInterval = 6500;                        // interval between each VO
+const perimeterIncrementMin = 0.15;                       // minimum circle grow rate (at start of experience)
+const perimeterIncrementMax = 0.5;                        // maximum circle grow rate (at final escalation stage)
 const perimeterThresholds = [0, 60, 200, 450, 1250];      // circle sizes for incrementing escalation levels
-const timerInterval = 100;                                  // no need to change this one
+const timerInterval = 100;                                // no need to change this one
 
 let audioContext;
 let randomNoiseNode;
@@ -153,10 +153,10 @@ function drawLoop() {
     perimeterRadiusPrev = perimeterRadius;
 
 
-    if (!isPointerDown) {
-        wormhole.pause();
-    } else {
+    if (isPointerDown) {
         wormhole.resume();
+    } else {
+        wormhole.pause();
     }
 
     if (isPointerDown) {
@@ -166,7 +166,7 @@ function drawLoop() {
         perimeterIncrement = 0;//dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
     }
 
-    if (isInCircle || escalationLevel >= 4 && isPointerDown) {
+    if ((isInCircle || escalationLevel) >= 4 && isPointerDown) {
         gameActive = true;
         if (!gameActivePrev) {
             // events to trigger when entering circle
@@ -178,7 +178,7 @@ function drawLoop() {
             perimeterRadius += perimeterIncrement;
             incrementing = true;
         }
-    } else if(isPointerDown) {
+    } else {
         gameActive = false;
         if (gameActivePrev) {
             // events to trigger when exiting circle
@@ -193,7 +193,7 @@ function drawLoop() {
 
     gameActivePrev = gameActive;
 
-    if(isPointerDown) {
+    if (isPointerDown) {
         for (const p in perimeterThresholds) {
             if (perimeterRadiusPrev < perimeterThresholds[p] && perimeterRadius >= perimeterThresholds[p]) {
                 changeEscalationLevel(p);
