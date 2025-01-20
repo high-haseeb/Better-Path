@@ -155,8 +155,6 @@ function drawLoop() {
 
     if (!isPointerDown) {
         wormhole.pause();
-        gameActive = false;
-        gameActivePrev = false;
     } else {
         wormhole.resume();
     }
@@ -180,7 +178,7 @@ function drawLoop() {
             perimeterRadius += perimeterIncrement;
             incrementing = true;
         }
-    } else {
+    } else if(isPointerDown) {
         gameActive = false;
         if (gameActivePrev) {
             // events to trigger when exiting circle
