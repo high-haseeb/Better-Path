@@ -15,10 +15,10 @@ export class WormHole {
         this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
         // create a tube geometry from the spline
-        this.tubeGeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
+        this.tubeGeo = new THREE.TubeGeometry(spline, 512, 0.65, 32, true);
 
         // create edges geometry from the spline
-        const edges = new THREE.EdgesGeometry(this.tubeGeo, 0.2);
+        const edges = new THREE.EdgesGeometry(this.tubeGeo, 0.3);
         const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 4 });
         const tubeLines = new THREE.LineSegments(edges, lineMat);
         this.scene.add(tubeLines);

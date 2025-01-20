@@ -187,7 +187,7 @@ function drawLoop() {
         }
         if (perimeterRadius > 50) {
             perimeterRadius -= perimeterDecrement;
-            wormhole.reverse();
+            // wormhole.reverse();
             // wormhole.resume();
             decrementing = false;
         }
