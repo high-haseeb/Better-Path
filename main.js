@@ -155,6 +155,8 @@ function drawLoop() {
 
     if (!isPointerDown) {
         wormhole.pause();
+        gameActive = false;
+        gameActivePrev = false;
     } else {
         wormhole.resume();
     }
@@ -166,7 +168,7 @@ function drawLoop() {
         perimeterIncrement = 0;//dcMap(timeInMillisecondsGameActive, 0, 30000, perimeterIncrementMin, perimeterIncrementMax);
     }
 
-    if (isInCircle || escalationLevel >= 4) {
+    if (isInCircle || escalationLevel >= 4 && isPointerDown) {
         gameActive = true;
         if (!gameActivePrev) {
             // events to trigger when entering circle
@@ -187,17 +189,17 @@ function drawLoop() {
         }
         if (perimeterRadius > 50) {
             perimeterRadius -= perimeterDecrement;
-            // wormhole.reverse();
-            // wormhole.resume();
             decrementing = false;
         }
     }
 
     gameActivePrev = gameActive;
 
-    for (const p in perimeterThresholds) {
-        if (perimeterRadiusPrev < perimeterThresholds[p] && perimeterRadius >= perimeterThresholds[p]) {
-            changeEscalationLevel(p);
+    if(isPointerDown) {
+        for (const p in perimeterThresholds) {
+            if (perimeterRadiusPrev < perimeterThresholds[p] && perimeterRadius >= perimeterThresholds[p]) {
+                changeEscalationLevel(p);
+            }
         }
     }
 
