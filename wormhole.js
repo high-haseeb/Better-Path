@@ -20,7 +20,7 @@ export class WormHole {
         this.renderer.setSize(w, h);
         // this.renderer.setPixelRatio(1);
 
-        this.tubeGeo = new THREE.TubeGeometry(spline, 512, 0.65, 64, true);
+        this.tubeGeo = new THREE.TubeGeometry(spline, 1024, 0.65, 128, true);
 
         const edges = new THREE.EdgesGeometry(this.tubeGeo, 0.1);
         const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2.0 });
