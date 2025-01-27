@@ -13,7 +13,7 @@ export class WormHole {
         const w = window.innerWidth;
         const h = window.innerHeight;
         this.scene = new THREE.Scene();
-        this.scene.fog = new THREE.FogExp2(0x000000, 0.3);
+        this.scene.fog = new THREE.FogExp2(0x000000, 0.4);
         this.camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
         this.camera.position.z = 5;
         this.renderer = new THREE.WebGLRenderer();
@@ -41,7 +41,7 @@ export class WormHole {
         bloomPass.radius = 0;
         this.composer = new EffectComposer(this.renderer);
         this.composer.addPass(renderScene);
-        this.composer.addPass(bloomPass);
+        // this.composer.addPass(bloomPass);
 
         const stars = getStarfield();
         this.scene.add(stars);
