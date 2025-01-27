@@ -258,8 +258,21 @@ canvas.addEventListener('pointerup', (_event) => {
     isPointerDown = false;
 });
 
+const eLevelText = document.getElementById('eLevel');
+const levelMap = [
+    "Losing Stage",
+    "Despration Stage",
+    "Hopelessness Stage",
+    "Recovery Stage",
+];
+const setEscalationText = (level) => {
+    eLevelText.innerText = levelMap[level];
+}
+
 startCanvas.addEventListener('click', (event) => {
     console.log("Starting soon");
+    const prompt = document.getElementById("prompt");
+    prompt.classList.add("prompt-animate");
     startCanvas.style.visibility = 'hidden';
     startCanvas.style.opacity = 0;
     document.getElementById("quote").style.opacity = 0;
@@ -351,6 +364,7 @@ function triggerVO_escalation() {
     if (audioContextStarted) {
 
         console.log("escalationLevel " + escalationLevel);
+        setEscalationText(escalationLevel - 1);
         if (escalationLevel == 1)
             path = vo_escalation_mild[getRandomInt(0, vo_escalation_mild.length - 1)];
         if (escalationLevel == 2)

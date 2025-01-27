@@ -3,6 +3,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 canvas {
@@ -27,68 +30,121 @@ canvas {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 2s linear;
-  }
+}
 
 .canvas {
     background-color: black;
 }
+
 #fullscreenQuote {
     color: white;
-    font-family:'Times New Roman', Times, serif;
-    font-size:xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
 }
 
 #fullscreenQuoteSub {
     color: white;
-    font-family:'Times New Roman', Times, serif;
-    font-style:italic;
-    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: large;
 }
 
 
 blockquote {
     color: rgba(250, 255, 255, 0.9);
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     /* font-family: Tahoma, sans-serif; */
     font-size: 60px;
     width: 60%;
     margin: 0 auto;
     z-index: 0;
     transition: 1s;
- }
- blockquote h1 {
+}
+
+blockquote h1 {
     color: rgba(250, 255, 255, 0.9);
     font-size: 4rem;
- }
- blockquote p {
+}
+
+blockquote p {
     color: rgba(250, 255, 255, 0.9);
     font-style: italic;
     margin-bottom: 0;
- }
- 
- blockquote p::before,
- blockquote p::after {
+}
+
+blockquote p::before,
+blockquote p::after {
     content: "“";
     font-family: Georgia;
     font-size: 8rem;
     margin: -2rem 0 0 -4rem;
     position: absolute;
     opacity: 0.5;
- }
- 
- blockquote p::after {
+}
+
+blockquote p::after {
     content: "”";
     margin: -1rem -4rem 0 0;
- }
- 
- blockquote cite {
+}
+
+blockquote cite {
     color: rgba(250, 255, 255, 0.9);
     font-size: 1.5rem;
- }
+}
 
- blockquote .hidden {
+blockquote .hidden {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 2s linear;
-  }
+}
 
+
+#prompt {
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+    width: 40%;
+    color: white;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+    font-weight: bold;
+    font-family: 'sans';
+    opacity: 0;
+}
+
+.prompt-animate {
+    animation: prompt 4s ease-in-out 1s forwards;
+}
+
+@keyframes prompt {
+    0% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+    }
+
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#eLevel {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-weight: bold;
+    color: white;
+    font-size: 2rem;
+    font-family: 'sans';
+}
