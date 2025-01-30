@@ -261,7 +261,7 @@ canvas.addEventListener('pointerup', (_event) => {
 const eLevelText = document.getElementById('eLevel');
 const levelMap = [
     "Losing Stage",
-    "Despration Stage",
+    "Desperation Stage",
     "Hopelessness Stage",
     "Recovery Stage",
 ];
@@ -269,7 +269,8 @@ const setEscalationText = (level) => {
     eLevelText.innerText = levelMap[level];
 }
 
-startCanvas.addEventListener('click', (event) => {
+startCanvas.style.opacity = 0;
+document.addEventListener('click', (event) => {
     console.log("Starting soon");
     const prompt = document.getElementById("prompt");
     prompt.classList.add("prompt-animate");

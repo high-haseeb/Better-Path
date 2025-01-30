@@ -139,6 +139,7 @@ canvas {
     top: 0;
     left: 0;
 }
+
 #eLevel {
     position: absolute;
     top: 5%;
@@ -147,4 +148,18 @@ canvas {
     color: white;
     font-size: 2rem;
     font-family: 'sans';
+}
+
+#quote {
+    animation: fadeOut 2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
