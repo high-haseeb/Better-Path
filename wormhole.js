@@ -7,6 +7,7 @@ import { EffectComposer } from "jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "jsm/postprocessing/UnrealBloomPass.js";
 import getStarfield from "./getStarField.js";
+import { Text } from 'https://cdn.jsdelivr.net/npm/troika-three-text@0.52.3/+esm'
 
 export class WormHole {
     constructor() {
@@ -45,9 +46,33 @@ export class WormHole {
 
         const stars = getStarfield();
         this.scene.add(stars);
+        this.texts = [
+            "anger",
+            "guilt",
+            "pain",
+            "betrayl",
+            "lies"
+        ]
+        this.addTextAlongCurve();
 
         window.addEventListener('resize', () => this.handleWindowResize());
         this.animate();
+    }
+
+    addTextAlongCurve() {
+        for (let i = 0; i < this.texts.length; i++) {
+            const u = i / this.texts.length;
+            const pos = this.tubeGeo.parameters.path.getPointAt(u);
+            const text = new Text();
+            text.text = this.texts[i];
+            text.fontSize = 0.3;
+            text.position.set(pos.x, pos.y, pos.z);
+            text.anchorX = "center";
+            text.anchorY = "middle";
+            text.color = "white";
+            text.sync();
+            this.scene.add(text);
+        }
     }
 
     getCanvas() {

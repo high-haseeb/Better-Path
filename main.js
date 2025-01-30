@@ -269,8 +269,13 @@ const setEscalationText = (level) => {
     eLevelText.innerText = levelMap[level];
 }
 
+let chimePlayed = false;
 startCanvas.style.opacity = 0;
 document.addEventListener('click', (event) => {
+
+    if (chimePlayed) return;
+    chimePlayed = true;
+
     console.log("Starting soon");
     const prompt = document.getElementById("prompt");
     prompt.classList.add("prompt-animate");
