@@ -397,94 +397,209 @@ const startCtxBtn = document.querySelector(".start");
 const setupSamplesBtn = document.querySelector(".setup-samples");
 const playSampleBtn = document.querySelector(".play-sample");
 
-const samplePaths = ["audio/ambience/brain_binaural_ambience_bookies_seamless.ogg", "audio/vo/temptation_01.ogg", "audio/vo/temptation_02.ogg"];
+const samplePaths = [
+	"audio/ambience/brain_binaural_ambience_bookies_seamless.ogg",
+	"audio/vo/temptation_01.ogg",
+	"audio/vo/temptation_02.ogg"
+];
 
-const paths_ambienceLoops = ["audio/ambience/brain_ambience_idle.ogg",
+const paths_ambienceLoops = [
+    // "audio/ambience/brain_ambience_idle.ogg",
+
     "audio/ambience/brain_ambience_escalation_0.ogg",
     "audio/ambience/brain_ambience_escalation_1.ogg",
     "audio/ambience/brain_ambience_escalation_2.ogg",
-    "audio/ambience/brain_ambience_escalation_3.ogg"];
+    "audio/ambience/brain_ambience_escalation_3.ogg"
+];
 
-const vo_escalation_mild = ["audio/vo/escalation_mild_01.ogg",
-    "audio/vo/escalation_mild_02.ogg",
-    "audio/vo/escalation_mild_03.ogg",
-    "audio/vo/escalation_mild_04.ogg",
-    "audio/vo/escalation_mild_05.ogg",
-    "audio/vo/escalation_mild_06.ogg",
-    "audio/vo/escalation_mild_07.ogg"];
+const vo_escalation_mild = [
+    // "audio/vo/escalation_mild_01.ogg",
+    // "audio/vo/escalation_mild_02.ogg",
+    // "audio/vo/escalation_mild_03.ogg",
+    // "audio/vo/escalation_mild_04.ogg",
+    // "audio/vo/escalation_mild_05.ogg",
+    // "audio/vo/escalation_mild_06.ogg",
+    // "audio/vo/escalation_mild_07.ogg"
+    "audio/vo/Audios/temp_1.wav",
+    "audio/vo/Audios/temp_2.wav",
+    "audio/vo/Audios/temp_3.wav",
+    "audio/vo/Audios/temp_4.wav",
+];
 
-const vo_escalation_medium = ["audio/vo/escalation_med_01_with_tail.ogg",
-    "audio/vo/escalation_med_02_with_tail.ogg",
-    "audio/vo/escalation_med_03_with_tail.ogg",
-    "audio/vo/escalation_med_04_with_tail.ogg",
-    "audio/vo/escalation_med_05_with_tail.ogg",
-    "audio/vo/escalation_med_06_with_tail.ogg"];
+const vo_escalation_medium = [
 
-const vo_escalation_strong = ["audio/vo/escalation_strong_01_with_tail.ogg",
-    "audio/vo/escalation_strong_02_with_tail.ogg",
-    //"audio/vo/escalation_strong_03_with_tail.ogg",
-    "audio/vo/escalation_strong_04_with_tail.ogg",
-    "audio/vo/escalation_strong_05_with_tail.ogg",
-    "audio/vo/escalation_strong_06_with_tail.ogg"];
+    // "audio/vo/escalation_med_01_with_tail.ogg",
+    // "audio/vo/escalation_med_02_with_tail.ogg",
+    // "audio/vo/escalation_med_03_with_tail.ogg",
+    // "audio/vo/escalation_med_04_with_tail.ogg",
+    // "audio/vo/escalation_med_05_with_tail.ogg",
+    // "audio/vo/escalation_med_06_with_tail.ogg"
+    "audio/vo/Audios/anger_1.wav",
+    "audio/vo/Audios/anger_2.wav",
+    "audio/vo/Audios/anger_3.wav",
+    "audio/vo/Audios/anger_4.wav",
+    "audio/vo/Audios/anger_5.wav",
+    "audio/vo/Audios/anger_6.wav",
+];
 
-const vo_deescalation = ["audio/vo/deescalation_01.ogg",
-    "audio/vo/deescalation_02.ogg",
-    "audio/vo/deescalation_03.ogg",
-    "audio/vo/deescalation_04.ogg",
-    "audio/vo/deescalation_05.ogg",
-    "audio/vo/deescalation_06.ogg",
-    "audio/vo/deescalation_07.ogg",
-    "audio/vo/deescalation_08.ogg",
-    "audio/vo/deescalation_09.ogg"];
+const vo_escalation_strong = [
+    // "audio/vo/escalation_strong_01_with_tail.ogg",
+    // "audio/vo/escalation_strong_02_with_tail.ogg",
+    // "audio/vo/escalation_strong_03_with_tail.ogg",
+    // "audio/vo/escalation_strong_04_with_tail.ogg",
+    // "audio/vo/escalation_strong_05_with_tail.ogg",
+    // "audio/vo/escalation_strong_06_with_tail.ogg"
+    "audio/vo/Audios/panic_1.wav",
+    "audio/vo/Audios/panic_2.wav",
+    "audio/vo/Audios/panic_3.wav",
+    "audio/vo/Audios/panic_4.wav",
 
-const vo_temptation = ["audio/vo/temptation_01.ogg",
-    "audio/vo/temptation_02.ogg",
-    "audio/vo/temptation_03.ogg",
-    "audio/vo/temptation_04.ogg",
-    "audio/vo/temptation_05.ogg",
-    "audio/vo/temptation_06.ogg"];
+];
 
-const vo_sensibility = ["audio/vo/sensibility_01.ogg",
-    "audio/vo/sensibility_02.ogg",
-    "audio/vo/sensibility_03.ogg",
-    "audio/vo/sensibility_04.ogg",
-    "audio/vo/sensibility_05.ogg",];
+const vo_deescalation = [
+
+    "audio/vo/Audios/guilt_1.wav",
+    "audio/vo/Audios/guilt_2.wav",
+    "audio/vo/Audios/guilt_3.wav",
+    "audio/vo/Audios/guilt_4.wav",
+    "audio/vo/Audios/guilt_5.wav",
+    "audio/vo/Audios/guilt_6.wav",
+    // "audio/vo/deescalation_01.ogg",
+    // "audio/vo/deescalation_02.ogg",
+    // "audio/vo/deescalation_03.ogg",
+    // "audio/vo/deescalation_04.ogg",
+    // "audio/vo/deescalation_05.ogg",
+    // "audio/vo/deescalation_06.ogg",
+    // "audio/vo/deescalation_07.ogg",
+    // "audio/vo/deescalation_08.ogg",
+    // "audio/vo/deescalation_09.ogg"
+];
+
+const vo_temptation = [
+
+    "audio/vo/Audios/loss_1.wav",
+    "audio/vo/Audios/loss_2.wav",
+    "audio/vo/Audios/loss_3.wav",
+    "audio/vo/Audios/loss_4.wav",
+    "audio/vo/Audios/loss_5.wav",
+    "audio/vo/Audios/loss_6.wav",
+    "audio/vo/Audios/loss_7.wav",
+    "audio/vo/Audios/loss_8.wav",
+    "audio/vo/Audios/loss_9.wav",
+    "audio/vo/Audios/loss_10.wav",
+    "audio/vo/Audios/loss_11.wav",
+    "audio/vo/Audios/loss_12.wav",
+    // "audio/vo/temptation_01.ogg",
+    // "audio/vo/temptation_02.ogg",
+    // "audio/vo/temptation_03.ogg",
+    // "audio/vo/temptation_04.ogg",
+    // "audio/vo/temptation_05.ogg",
+    // "audio/vo/temptation_06.ogg"
+];
+
+const vo_sensibility = [
+    "audio/vo/Audios/sad_1.wav",
+    "audio/vo/Audios/sad_2.wav",
+    "audio/vo/Audios/sad_3.wav",
+    "audio/vo/Audios/sad_4.wav",
+    "audio/vo/Audios/sad_5.wav",
+    "audio/vo/Audios/sad_6.wav",
+    "audio/vo/Audios/sad_7.wav",
+    "audio/vo/Audios/sad_8.wav",
+    "audio/vo/Audios/sad_9.wav",
+    "audio/vo/Audios/sad_10.wav",
+];
 
 const vo_void = ["audio/vo/vo_acceptance_01.ogg",
-    "audio/vo/vo_acceptance_02.ogg",
-    "audio/vo/vo_acceptance_03.ogg",
-    "audio/vo/vo_acceptance_04.ogg",
-    "audio/vo/vo_acceptance_05.ogg",
-    "audio/vo/vo_acceptance_06.ogg",
-    "audio/vo/vo_acceptance_07.ogg",
-    "audio/vo/vo_acceptance_08ogg",
-    "audio/vo/vo_acceptance_09.ogg",
-    "audio/vo/vo_acceptance_10.ogg",
-    "audio/vo/vo_acceptance_11.ogg",
-    "audio/vo/vo_anger_01.ogg",
-    "audio/vo/vo_anger_02.ogg",
-    "audio/vo/vo_anger_03.ogg",
-    "audio/vo/vo_anger_04.ogg",
-    "audio/vo/vo_anger_05.ogg",
-    "audio/vo/vo_anger_06.ogg",
-    "audio/vo/vo_guilt_01.ogg",
-    "audio/vo/vo_guilt_02.ogg",
-    "audio/vo/vo_guilt_03.ogg",
-    "audio/vo/vo_guilt_04.ogg",
-    "audio/vo/vo_loss_01.ogg",
-    "audio/vo/vo_loss_02.ogg",
-    "audio/vo/vo_loss_03.ogg",
-    "audio/vo/vo_loss_04.ogg",
-    "audio/vo/vo_loss_05.ogg",
-    "audio/vo/vo_loss_06.ogg",
-    "audio/vo/vo_panic_01.ogg",
-    "audio/vo/vo_panic_02.ogg",
-    "audio/vo/vo_panic_03.ogg",
-    "audio/vo/vo_panic_04.ogg",
-    "audio/vo/vo_sadness_01.ogg",
-    "audio/vo/vo_sadness_02.ogg",
-    "audio/vo/vo_sadness_03.ogg",
-    "audio/vo/vo_sadness_04.ogg"];
+    "audio/vo/Audios/accp_1.wav",
+    "audio/vo/Audios/accp_2.wav",
+    "audio/vo/Audios/accp_3.wav",
+    "audio/vo/Audios/accp_4.wav",
+    "audio/vo/Audios/accp_5.wav",
+    // "audio/vo/vo_acceptance_03.ogg",
+    // "audio/vo/vo_acceptance_04.ogg",
+    // "audio/vo/vo_acceptance_05.ogg",
+    // "audio/vo/vo_acceptance_06.ogg",
+    // "audio/vo/vo_acceptance_07.ogg",
+    // "audio/vo/vo_acceptance_08ogg",
+    // "audio/vo/vo_acceptance_09.ogg",
+    // "audio/vo/vo_acceptance_10.ogg",
+    // "audio/vo/vo_acceptance_11.ogg",
+    "audio/vo/Audios/anger_1.wav",
+    "audio/vo/Audios/anger_2.wav",
+    "audio/vo/Audios/anger_3.wav",
+    "audio/vo/Audios/anger_4.wav",
+    "audio/vo/Audios/anger_5.wav",
+    "audio/vo/Audios/anger_6.wav",
+
+    // "audio/vo/vo_anger_01.ogg",
+    // "audio/vo/vo_anger_02.ogg",
+    // "audio/vo/vo_anger_03.ogg",
+    // "audio/vo/vo_anger_04.ogg",
+    // "audio/vo/vo_anger_05.ogg",
+    // "audio/vo/vo_anger_06.ogg",
+
+    "audio/vo/Audios/guilt_1.wav",
+    "audio/vo/Audios/guilt_2.wav",
+    "audio/vo/Audios/guilt_3.wav",
+    "audio/vo/Audios/guilt_4.wav",
+    "audio/vo/Audios/guilt_5.wav",
+    "audio/vo/Audios/guilt_6.wav",
+
+
+    // "audio/vo/vo_guilt_01.ogg",
+    // "audio/vo/vo_guilt_02.ogg",
+    // "audio/vo/vo_guilt_03.ogg",
+    // "audio/vo/vo_guilt_04.ogg",
+    "audio/vo/Audios/loss_1.wav",
+    "audio/vo/Audios/loss_2.wav",
+    "audio/vo/Audios/loss_3.wav",
+    "audio/vo/Audios/loss_4.wav",
+    "audio/vo/Audios/loss_5.wav",
+    "audio/vo/Audios/loss_6.wav",
+    "audio/vo/Audios/loss_7.wav",
+    "audio/vo/Audios/loss_8.wav",
+    "audio/vo/Audios/loss_9.wav",
+    "audio/vo/Audios/loss_10.wav",
+    "audio/vo/Audios/loss_11.wav",
+    "audio/vo/Audios/loss_12.wav",
+
+    // "audio/vo/vo_loss_01.ogg",
+    // "audio/vo/vo_loss_02.ogg",
+    // "audio/vo/vo_loss_03.ogg",
+    // "audio/vo/vo_loss_04.ogg",
+    // "audio/vo/vo_loss_05.ogg",
+    // "audio/vo/vo_loss_06.ogg",
+
+
+    "audio/vo/Audios/panic_1.wav",
+    "audio/vo/Audios/panic_2.wav",
+    "audio/vo/Audios/panic_3.wav",
+    "audio/vo/Audios/panic_4.wav",
+
+    // "audio/vo/vo_panic_01.ogg",
+    // "audio/vo/vo_panic_02.ogg",
+    // "audio/vo/vo_panic_03.ogg",
+    // "audio/vo/vo_panic_04.ogg",
+
+    "audio/vo/Audios/sad_1.wav",
+    "audio/vo/Audios/sad_2.wav",
+    "audio/vo/Audios/sad_3.wav",
+    "audio/vo/Audios/sad_4.wav",
+    "audio/vo/Audios/sad_5.wav",
+    "audio/vo/Audios/sad_6.wav",
+    "audio/vo/Audios/sad_7.wav",
+    "audio/vo/Audios/sad_8.wav",
+    "audio/vo/Audios/sad_9.wav",
+    "audio/vo/Audios/sad_10.wav",
+
+
+    
+    // "audio/vo/vo_sadness_01.ogg",
+    // "audio/vo/vo_sadness_02.ogg",
+    // "audio/vo/vo_sadness_03.ogg",
+    // "audio/vo/vo_sadness_04.ogg"
+];
 
 async function startAudioContext() {
     audioContext = new AudioContext();
