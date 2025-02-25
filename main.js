@@ -421,7 +421,8 @@ const vo_escalation_mild = [
     // "audio/vo/escalation_mild_06.ogg",
     // "audio/vo/escalation_mild_07.ogg"
     "audio/vo/Audios/temp_1.wav",
-    "audio/vo/Audios/temp_2.wav",
+    "audio/vo/Audios/recovery_1.wav",
+    "audio/vo/Audios/loss_6.wav",
     "audio/vo/Audios/temp_3.wav",
     "audio/vo/Audios/temp_4.wav",
 ];
@@ -434,12 +435,19 @@ const vo_escalation_medium = [
     // "audio/vo/escalation_med_04_with_tail.ogg",
     // "audio/vo/escalation_med_05_with_tail.ogg",
     // "audio/vo/escalation_med_06_with_tail.ogg"
-    "audio/vo/Audios/anger_1.wav",
-    "audio/vo/Audios/anger_2.wav",
-    "audio/vo/Audios/anger_3.wav",
-    "audio/vo/Audios/anger_4.wav",
-    "audio/vo/Audios/anger_5.wav",
-    "audio/vo/Audios/anger_6.wav",
+    "audio/vo/Audios/guilt_1.wav",
+    "audio/vo/Audios/recovery_2.wav",
+    "audio/vo/Audios/guilt_2.wav",
+    "audio/vo/Audios/guilt_3.wav",
+    "audio/vo/Audios/recovery_4.wav",
+    "audio/vo/Audios/recovery_5.wav",
+    "audio/vo/Audios/recovery_6.wav",
+    "audio/vo/Audios/guilt_4.wav",
+    "audio/vo/Audios/guilt_5.wav",
+    "audio/vo/Audios/guilt_6.wav",
+ 
+
+
 ];
 
 const vo_escalation_strong = [
@@ -449,21 +457,19 @@ const vo_escalation_strong = [
     // "audio/vo/escalation_strong_04_with_tail.ogg",
     // "audio/vo/escalation_strong_05_with_tail.ogg",
     // "audio/vo/escalation_strong_06_with_tail.ogg"
-    "audio/vo/Audios/panic_1.wav",
-    "audio/vo/Audios/panic_2.wav",
-    "audio/vo/Audios/panic_3.wav",
-    "audio/vo/Audios/panic_4.wav",
+    "audio/vo/Audios/anger_1.wav",
+    "audio/vo/Audios/anger_2.wav",
+    "audio/vo/Audios/recovery_3.wav",
+    "audio/vo/Audios/anger_3.wav",
+    "audio/vo/Audios/anger_4.wav",
+    "audio/vo/Audios/anger_5.wav",
+    "audio/vo/Audios/anger_6.wav",
 
 ];
 
 const vo_deescalation = [
 
-    "audio/vo/Audios/guilt_1.wav",
-    "audio/vo/Audios/guilt_2.wav",
-    "audio/vo/Audios/guilt_3.wav",
-    "audio/vo/Audios/guilt_4.wav",
-    "audio/vo/Audios/guilt_5.wav",
-    "audio/vo/Audios/guilt_6.wav",
+
     // "audio/vo/deescalation_01.ogg",
     // "audio/vo/deescalation_02.ogg",
     // "audio/vo/deescalation_03.ogg",
@@ -473,16 +479,23 @@ const vo_deescalation = [
     // "audio/vo/deescalation_07.ogg",
     // "audio/vo/deescalation_08.ogg",
     // "audio/vo/deescalation_09.ogg"
+    
 ];
 
 const vo_temptation = [
 
+    // "audio/vo/Audios/panic_1.wav",
+    // "audio/vo/Audios/panic_2.wav",
+    // "audio/vo/Audios/panic_3.wav",
+    // "audio/vo/Audios/panic_4.wav",
     "audio/vo/Audios/loss_1.wav",
     "audio/vo/Audios/loss_2.wav",
     "audio/vo/Audios/loss_3.wav",
     "audio/vo/Audios/loss_4.wav",
     "audio/vo/Audios/loss_5.wav",
-    "audio/vo/Audios/loss_6.wav",
+    "audio/vo/Audios/temp_2.wav",
+
+
     "audio/vo/Audios/loss_7.wav",
     "audio/vo/Audios/loss_8.wav",
     "audio/vo/Audios/loss_9.wav",
@@ -556,7 +569,7 @@ const vo_void = ["audio/vo/vo_acceptance_01.ogg",
     "audio/vo/Audios/loss_3.wav",
     "audio/vo/Audios/loss_4.wav",
     "audio/vo/Audios/loss_5.wav",
-    "audio/vo/Audios/loss_6.wav",
+
     "audio/vo/Audios/loss_7.wav",
     "audio/vo/Audios/loss_8.wav",
     "audio/vo/Audios/loss_9.wav",
