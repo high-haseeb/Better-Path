@@ -53,7 +53,7 @@ export class WormHole {
             "betrayl",
             "lies"
         ]
-        this.addTextAlongCurve();
+        // this.addTextAlongCurve();
 
         window.addEventListener('resize', () => this.handleWindowResize());
         this.animate();
